@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>Create a New Class Ranking</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post" action="{{ url_for('game.create') }}">
+    <div class="form-group">
+      <label for="title">Class Title</label>
+      <input type="text" id="title" name="title" required>
+    </div>
+
+    <div class="form-group">
+      <label>Category</label>
+      <div class="category-options">
+        <div class="category-option" data-value="Good" id="option-good">
+          <input type="radio" name="category" id="good" value="Good">
+          <label for="good">Good</label>
+        </div>
+        <div class="category-option" data-value="Average" id="option-average">
+          <input type="radio" name="category" id="average" value="Average">
+          <label for="average">Average</label>
+        </div>
+        <div class="category-option" data-value="Bad" id="option-bad">
+          <input type="radio" name="category" id="bad" value="Bad">
+          <label for="bad">Bad</label>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+{% endblock %}
