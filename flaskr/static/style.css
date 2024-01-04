@@ -48,6 +48,13 @@ input[type=submit] { align-self: start; min-width: 10em; }
     color: #333; /* Text color */
 }
 
+/* Style for the class title */
+.class-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333; /* Text color */
+}
+
 /* Style for the class rating */
 .class-rating {
     font-size: 16px;

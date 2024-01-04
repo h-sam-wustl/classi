@@ -11,6 +11,7 @@ CREATE TABLE shows (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   user_id INTEGER NOT NULL,
   title TEXT NOT NULL,
+  artists TEXT NOT NULL,
   rating REAL NOT NULL,
   category TEXT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES user (id)

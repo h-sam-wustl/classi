@@ -5,26 +5,88 @@
 {% endblock %}
 
 {% block content %}
+
+  <div id="check" class={{ check }}></div>
+
   <div class="comparison-container">
 
-    <form method="post" name="compare">
+    <h1>Is this your song?</h1>
+    <h1>{{track_title}} by {{track_artists}}</h1>
+
+    <form method="post" name="confirm" id="confirmForm">
   
         <div class="form-group">
-          <label>Which is Better?</label>
-          <div class="compare-options">
-            <div class="compare-option">
-              <input type="radio" name="compare" id="good" value="Higher">
-              <label for="good">{{ show }}</label>
+          <div class="confirm-options">
+            <div class="confirm-option">
+              <input type="radio" name="confirm" id="confirm_yes" value="Yes">
+              <label for="yes">Yes</label>
             </div>
-            <div class="compare-option">
-              <input type="radio" name="compare" id="average" value="Lower">
-              <label for="average">{{ compare_show['title'] }}</label>
+            <div class="confirm-option">
+              <input type="radio" name="confirm" id="confirm_no" value="No">
+              <label for="no">No</label>
             </div>
           </div>
         </div>
   
-        <button type="submit" class="btn btn-primary">Save</button>  
-      </form>
+        <button type="submit" class="btn btn-primary" id="confirm_submit">Save</button>  
+    </form>
+
+    <form method="post" name="compare" id="compareForm">
+    </form>
 
   </div>
+
+  <script>
+    var confirmYes=document.getElementById('confirm_yes')
+    var confirmSubmit=document.getElementById('confirm_submit')
+
+    var check=document.getElementById('check')
+
+    if (check.className=='True'){
+      document.getElementById("compareForm").innerHTML=`
+          <div class="form-group">
+              <label>Which is Better?</label>
+              <div class="compare-options">
+                <div class="compare-option">
+                  <input type="radio" name="compare" id="good" value="Higher">
+                  <label for="good">{{ track_title }} {{track_artists}}</label>
+                </div>
+                <div class="compare-option">
+                  <input type="radio" name="compare" id="average" value="Lower">
+                  <label for="average">{{ compare_show['title'] }} {{ compare_show['artists'] }}</label>
+                </div>
+              </div>
+            </div>
+      
+            <button type="submit" class="btn btn-primary">Save</button>  
+      `
+    }
+
+    confirmSubmit.addEventListener('click',function(event){
+      if (confirmYes){
+        showForm(event)
+      }
+    })
+
+    function showForm(event){ 
+      event.preventDefault();
+      document.getElementById("compareForm").innerHTML=`
+          <div class="form-group">
+              <label>Which is Better?</label>
+              <div class="compare-options">
+                <div class="compare-option">
+                  <input type="radio" name="compare" id="good" value="Higher">
+                  <label for="good">{{ track_title }} {{track_artists}}</label>
+                </div>
+                <div class="compare-option">
+                  <input type="radio" name="compare" id="average" value="Lower">
+                  <label for="average">{{ compare_show['title'] }} {{ compare_show['artists'] }}</label>
+                </div>
+              </div>
+            </div>
+      
+            <button type="submit" class="btn btn-primary">Save</button>  
+      `
+    }
+  </script>
 {% endblock %}

@@ -9,6 +9,7 @@
       {% set rating = show['score'] %}
       <li class="class-item" style="background-color: {% if rating >= 20/3 %}#B4FFB4{% elif rating >= 10/3 %}#FFFFB4{% else %}#FFB4B4{% endif %};">
           <span class="class-title">{{ show['title'] }}</span>
+          <span class="class-artists">{{ show['artists'] }}</span>
           <span class="class-rating">{{ rating }}</span>
       </li>
   {% endfor %}
